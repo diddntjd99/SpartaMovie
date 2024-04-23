@@ -37,38 +37,49 @@ function searchMovie() {
             //가져온 데이터 출력
             //data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
 
+            console.log(data);
+
             data['results'].forEach(element => {
                 // 새로운 div 요소 생성
                 let movieCard = document.createElement('div');
                 movieCard.classList.add('movieCard');
                 movieCard.id = element['id'];
 
+                let leftCard = document.createElement('div');
+                leftCard.classList.add('leftCard');
+                movieCard.appendChild(leftCard);
+
                 // 이미지 요소 생성 및 속성 설정
                 let img = document.createElement('img');
                 img.classList.add('poster');
                 img.src = 'https://image.tmdb.org/t/p/w500' + element['poster_path'];
-                movieCard.appendChild(img);
+                leftCard.appendChild(img);
 
                 // 이름 요소 생성 및 텍스트 설정
                 let title = document.createElement('p');
                 title.classList.add('movieName');
                 title.textContent = `이름: ${element['title']}`;
-                movieCard.appendChild(title);
+                leftCard.appendChild(title);
+
+                let rightCard = document.createElement('div');
+                rightCard.classList.add('rightCard');
+                movieCard.appendChild(rightCard);
 
                 // 설명 요소 생성 및 텍스트 설정
                 let explanation = document.createElement('p');
                 explanation.classList.add('explanation');
                 explanation.textContent = `설명: ${element['overview']}`;
-                movieCard.appendChild(explanation);
+                rightCard.appendChild(explanation);
 
                 // 평점 요소 생성 및 텍스트 설정
                 let rating = document.createElement('p');
                 rating.classList.add('rating');
                 rating.textContent = `평점: ${element['vote_average']}`;
-                movieCard.appendChild(rating);
+                rightCard.appendChild(rating);
 
                 document.getElementById('movieContent').appendChild(movieCard);
 
+                //MovieCard 클릭 시 이벤트
                 movieCard.addEventListener('click', function(event) {
                     alert('영화 ID = ' + event.currentTarget.id);
                 });
