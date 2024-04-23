@@ -6,31 +6,58 @@ const options = {
     }
 };
 
-function fetchMovie() {
-    // 가져올 데이터의 URL
-    const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+//페이지가 로딩되면 실행
+window.addEventListener("load", function () {
+    document.getElementById("searchTitle").focus();
 
-    // Fetch API를 사용하여 데이터 가져오기
-    fetch(url, options)
-    .then(response => {
-        // 서버 응답 확인
-        if (!response.ok) {
-            throw new Error('네트워크 상태가 좋지 않습니다.');
+    document.getElementById("searchTitle").addEventListener("keypress", function (event) {
+        // Enter 키인 경우
+        if (event.key === "Enter") {
+            searchMovie();
         }
-        // JSON 형식으로 변환하여 반환
-        return response.json();
-    }).then(data => {
-        // 가져온 데이터 출력
-        // data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
-        console.log('title:', data['results'][0]['title']);
-        console.log('overview:', data['results'][0]['overview']);
-        console.log('poster_path:', data['results'][0]['poster_path']);
-        console.log('vote_average:', data['results'][0]['vote_average']);
-    }).catch(error => {
-        // 오류 처리
-        console.error('Fetch 오류:', error);
-        alert('Fetch 오류: ' + error.message);
     });
-}
+});
 
-fetchMovie();
+function searchMovie() {
+    let fetchMovie = (search) => {
+        let movieArr = [];
+
+        // 가져올 데이터의 URL, search 단어를 통해 해당 제목을 가진 영화만 검색
+        const url = 'https://api.themoviedb.org/3/search/movie?query=' + search + '&include_adult=false&language=en-US&page=1';
+
+        // Fetch API를 사용하여 데이터 가져오기
+        fetch(url, options).then(response => {
+            // 서버 응답 확인
+            if (!response.ok) {
+                throw new Error('네트워크 상태가 좋지 않습니다.');
+            }
+            // JSON 형식으로 변환하여 반환
+            return response.json();
+        }).then(data => {
+            // 가져온 데이터 출력
+            // data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
+            console.log('data:', data);
+
+            data['results'].forEach(element => {
+                movieArr.push(element);
+
+                console.log(element['title']);
+                console.log(element['overview']);
+                console.log(element['poster_path']);
+                console.log(element['vote_average']);
+                console.log('--------------------------------------------------------------');
+            });
+        }).catch(error => {
+            // 오류 처리
+            console.error('Fetch 오류:', error);
+            alert('Fetch 오류: ' + error.message);
+        });
+
+        return movieArr;
+    };
+    //검색할 단어 추출 및 삭제
+    let searchTitle = document.getElementById('searchTitle').value;
+    document.getElementById('searchTitle').value = '';
+
+    let movieArr = fetchMovie(searchTitle);
+}
