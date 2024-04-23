@@ -36,18 +36,11 @@ function searchMovie() {
         }).then(data => {
             //가져온 데이터 출력
             //data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
-            console.log('data:', data);
 
             data['results'].forEach(element => {
-                console.log(element['title']);
-                console.log(element['overview']);
-                console.log(element['poster_path']);
-                console.log(element['vote_average']);
-                console.log('--------------------------------------------------------------');
-
                 // 새로운 div 요소 생성
                 let movieCard = document.createElement('div');
-                movieCard.classList.add('row', 'row-cols-1', 'row-cols-md-5', 'g-4');
+                movieCard.classList.add('movieCard');
                 movieCard.id = element['id'];
 
                 // 이미지 요소 생성 및 속성 설정
@@ -75,6 +68,10 @@ function searchMovie() {
                 movieCard.appendChild(rating);
 
                 document.getElementById('movieContent').appendChild(movieCard);
+
+                movieCard.addEventListener('click', function(event) {
+                    alert('영화 ID = ' + event.currentTarget.id);
+                });
             });
         }).catch(error => {
             //오류 처리
