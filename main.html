@@ -4,20 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sparta Movie</title>
     <link href="style.css" rel="stylesheet" />
     <script src="script.js"></script>
 </head>
 
 <body>
+    <header>
+        <h1>영화</h1>
+    </header>
+
     <div>
         <input type="text" id="searchTitle" placeholder="영화 제목을 입력하세요." />
         <button onclick="searchMovie()">검색</button>
     </div>
 
-    <div class="content" id="movieContent">
-        <div class="row row-cols-1 row-cols-md-5 g-4" id="member-cards"></div>
-    </div>
+    <div class="content" id="movieContent"></div>
 </body>
 
 </html>
