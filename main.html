@@ -14,20 +14,16 @@
         <h1>영화</h1>
     </header>
 
-    <div>
-        <input type="text" id="searchTitle" placeholder="영화 제목을 입력하세요." />
+    <div class="searchContent">
+        <input type="text" id="searchTitle" placeholder="영화 제목을 입력하세요."/>
         <button onclick="searchMovie()">검색</button>
     </div>
 
-    <div id="movieContent"></div>
+    <select id="pageDropdown">
+        <option value="" selected>Page</option>
+    </select>
 
-    <footer classs="pagination">
-        <span class="pagination-button active">1</span>
-        <span class="pagination-button">2</span>
-        <span class="pagination-button">3</span>
-        <span class="pagination-button">4</span>
-        <span class="pagination-button">5</span>
-    </footer>
+    <div id="movieContent"></div>
 </body>
 
 </html>

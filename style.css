@@ -6,16 +6,27 @@ body {
     align-items: center;
 }
 
-body > header {
-    text-align: center; /* 제목을 가운데 정렬합니다. */
+body>header {
+    text-align: center;
+    /* 제목을 가운데 정렬합니다. */
     margin-top: 10px;
+}
+
+#pageDropdown {
+    margin-left: auto;
+    margin-top: 30px;
 }
 
 #movieContent {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개의 열을 가지도록 설정합니다. */
-    gap: 20px; /* 그리드 아이템 사이의 간격을 지정합니다. */
-    justify-items: center; /* 그리드 아이템을 수평 중앙에 정렬합니다. */
+    grid-template-columns: repeat(4, 1fr);
+    /* 한 줄에 4개의 열을 가지도록 설정합니다. */
+    gap: 10px;
+    /* 그리드 아이템 사이의 간격을 지정합니다. */
+    justify-items: center;
+    /* 그리드 아이템을 수평 중앙에 정렬합니다. */
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .movieCard {
@@ -24,23 +35,27 @@ body > header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.movieTitle {
+    font-weight: bold;
+}
+
+.leftCard {
+    width: 40%;
+}
+
+.rightCard {
+    width: 60%;
 }
 
 .poster {
-    width: 300px;
-    height: 300px;
-}
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 5px;
 
-.pagination {
-    margin-top: 20px;
-}
-
-.pagination-button {
-    padding: 10px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.pagination-button.active {
-    color: #ff7b00;
+    margin-left: 10px;
 }
