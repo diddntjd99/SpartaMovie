@@ -24,12 +24,14 @@ window.addEventListener("load", function () {
 });
 
 function searchMovie() {
-    //검색할 단어 추출 및 삭제
+    //기존 세션 아이템 삭제
     sessionStorage.removeItem("searchTitle");
 
+    //검색할 단어 추출 및 삭제
     let searchTitle = document.getElementById('searchTitle').value;
     document.getElementById('searchTitle').value = '';
 
+    //현재 세션 아이템 세팅
     sessionStorage.setItem("searchTitle", searchTitle);
 
     fetchMovie(searchTitle);
@@ -57,7 +59,6 @@ function fetchMovie(search, page = 1) {
     }).then(data => {
         //가져온 데이터 출력
         //data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
-
         console.log(data);
 
         //기존 movieContent 내용이 있다면 삭제
@@ -66,6 +67,7 @@ function fetchMovie(search, page = 1) {
             movieContent.removeChild(movieContent.firstChild);
         }
 
+        //영화 검색으로 결과가 달라진다면 동작하도록
         if (page == 1) {
             //기존 페이지 드롭다운에 내용이 있다면 삭제
             let pagination = document.getElementById("pageDropdown");
