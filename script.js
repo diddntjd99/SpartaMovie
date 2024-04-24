@@ -23,7 +23,14 @@ window.addEventListener("load", function () {
 function searchMovie() {
     let fetchMovie = (search) => {
         //가져올 데이터의 URL, search 단어를 통해 해당 제목을 가진 영화만 검색
-        const url = 'https://api.themoviedb.org/3/search/movie?query=' + search + '&include_adult=false&language=en-US&page=1';
+        let url;
+
+        if (search == '') {
+            url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+        }
+        else {
+            url = 'https://api.themoviedb.org/3/search/movie?query=' + search + '&include_adult=false&language=en-US&page=1';
+        }
 
         //Fetch API를 사용하여 데이터 가져오기
         fetch(url, options).then(response => {
@@ -38,6 +45,13 @@ function searchMovie() {
             //data['results'][반복문][필요한 데이터 이름('title', 'overview', 'poster_path', 'vote_average')]
 
             console.log(data);
+
+            let movieContent = document.getElementById("movieContent");
+
+            // 부모 div의 모든 자식 요소를 제거합니다.
+            while (movieContent.firstChild) {
+                movieContent.removeChild(movieContent.firstChild);
+            }
 
             data['results'].forEach(element => {
                 // 새로운 div 요소 생성
@@ -80,7 +94,7 @@ function searchMovie() {
                 document.getElementById('movieContent').appendChild(movieCard);
 
                 //MovieCard 클릭 시 이벤트
-                movieCard.addEventListener('click', function(event) {
+                movieCard.addEventListener('click', function (event) {
                     alert('영화 ID = ' + event.currentTarget.id);
                 });
             });
@@ -96,3 +110,15 @@ function searchMovie() {
 
     fetchMovie(searchTitle);
 }
+
+function init() {
+    if (document.readyState !== "loading") {
+        //바로 readDB 함수를 사용해 저장된 데이터를 불러와 웹페이지에 표시합니다.
+        searchMovie();
+    } else {
+        //로딩 중이라면 DOM 컨텐츠 로딩을 모두 완료한 후, readDB 함수를 실행합니다.
+        document.addEventListener("DOMContentLoaded", searchMovie);
+    }
+}
+
+init();
