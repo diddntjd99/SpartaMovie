@@ -1,61 +1,90 @@
 body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(216, 255, 255);
 }
 
-body>header {
-    text-align: center;
-    /* 제목을 가운데 정렬합니다. */
-    margin-top: 10px;
+body > header {
+  text-align: center;
+  /* 제목을 가운데 정렬합니다. */
+  margin-top: 10px;
+}
+
+.searchContent {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 5px;
+}
+
+#searchTitle {
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+}
+
+#searchBtn {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#searchBtn:active {
+  background-color: rgb(220, 220, 220);
 }
 
 #pageDropdown {
-    margin-left: auto;
-    margin-top: 30px;
+  margin-left: auto;
+  margin-top: 30px;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 #movieContent {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* 한 줄에 4개의 열을 가지도록 설정합니다. */
-    gap: 10px;
-    /* 그리드 아이템 사이의 간격을 지정합니다. */
-    justify-items: center;
-    /* 그리드 아이템을 수평 중앙에 정렬합니다. */
-    margin-top: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 한 줄에 4개의 열을 가지도록 설정합니다. */
+  gap: 20px;
+  row-gap: 20px;
+  /* 그리드 아이템 사이의 간격을 지정합니다. */
+  justify-items: center;
+  /* 그리드 아이템을 수평 중앙에 정렬합니다. */
+
+  margin: 10px 10px 20px 10px;
 }
 
 .movieCard {
-    border: 1px solid black;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 .movieTitle {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .leftCard {
-    width: 40%;
+  width: 40%;
 }
 
 .rightCard {
-    width: 60%;
+  width: 60%;
 }
 
 .poster {
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-    border-radius: 5px;
-
-    margin-left: 10px;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-left: 10px;
 }
