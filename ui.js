@@ -1,14 +1,14 @@
+//기존 Content 내용이 있다면 삭제
 function removeContent(contentName) {
-  //기존 Content 내용이 있다면 삭제
   const content = document.getElementById(contentName);
   while (content.firstChild) {
     content.removeChild(content.firstChild);
   }
 }
 
+//총 페이지 수 데이터를 보고 페이지 수 만큼 드롭다운 옵션 생성
 function createPagination(total) {
   const pagination = document.getElementById("pageDropdown");
-  //총 페이지 수 데이터를 보고 페이지 수 만큼 드롭다운 옵션 생성
   for (let i = 0; i < total; i++) {
     const option = document.createElement("option");
     option.value = i + 1;
@@ -17,6 +17,7 @@ function createPagination(total) {
   }
 }
 
+//새 영화 카드 생성
 function createMovieCard(data) {
   data.results.forEach((element) => {
     // 새로운 div 요소 생성
@@ -65,6 +66,7 @@ function createMovieCard(data) {
   });
 }
 
+//영화 검색
 function searchMovie() {
   //기존 세션 아이템 삭제
   sessionStorage.removeItem("searchTitle");
@@ -79,11 +81,13 @@ function searchMovie() {
   fetchAndUpdateUI(searchTitle);
 }
 
+//페이지 변경 시
 function changedPage() {
   const searchTitle = sessionStorage.getItem("searchTitle");
   fetchAndUpdateUI(searchTitle, document.getElementById("pageDropdown").value);
 }
 
+//UI 업데이트
 function updateUI(data, page) {
   removeContent("movieContent");
   //페이지 변경될 때가 아닌 영화 검색할 때만 동작
@@ -94,6 +98,7 @@ function updateUI(data, page) {
   createMovieCard(data);
 }
 
+//fetch와 updateUI 함수 호출
 async function fetchAndUpdateUI(searchTitle, page = 1) {
   try {
     const data = await fetchMovie(searchTitle, page);
