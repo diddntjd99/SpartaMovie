@@ -9,5 +9,6 @@ window.addEventListener("load", function () {
   //Json으로 객체 변환
   const receivedData = JSON.parse(jsonData);
 
-  this.document.title = receivedData.title;
+  //페이지가 로딩이 되면 가져온 데이터를 통해 detail_ui의 함수를 호출
+  setDetailUI(receivedData);
 });
