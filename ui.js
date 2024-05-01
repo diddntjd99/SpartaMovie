@@ -25,37 +25,23 @@ function createMovieCard(data) {
     movieCard.classList.add("movieCard");
     movieCard.id = element.id;
 
-    const leftCard = document.createElement("div");
-    leftCard.classList.add("leftCard");
-    movieCard.appendChild(leftCard);
-
     // 이미지 요소 생성 및 속성 설정
     const img = document.createElement("img");
     img.classList.add("poster");
     img.src = "https://image.tmdb.org/t/p/w500" + element.poster_path;
-    leftCard.appendChild(img);
-
-    const rightCard = document.createElement("div");
-    rightCard.classList.add("rightCard");
-    movieCard.appendChild(rightCard);
+    movieCard.appendChild(img);
 
     // 이름 요소 생성 및 텍스트 설정
     const title = document.createElement("p");
     title.classList.add("movieTitle");
     title.textContent = `${element.title}`;
-    rightCard.appendChild(title);
-
-    // 설명 요소 생성 및 텍스트 설정
-    const explanation = document.createElement("p");
-    explanation.classList.add("explanation");
-    explanation.textContent = `${element.overview}`;
-    rightCard.appendChild(explanation);
+    movieCard.appendChild(title);
 
     // 평점 요소 생성 및 텍스트 설정
     const rating = document.createElement("p");
     rating.classList.add("rating");
     rating.textContent = `Rate: ${element.vote_average}`;
-    rightCard.appendChild(rating);
+    movieCard.appendChild(rating);
 
     document.getElementById("movieContent").appendChild(movieCard);
 

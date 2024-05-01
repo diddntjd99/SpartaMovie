@@ -61,9 +61,11 @@ body > header {
 }
 
 .movieCard {
+  width: 300px;
   border: 1px solid black;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -73,17 +75,9 @@ body > header {
   font-weight: bold;
 }
 
-.leftCard {
-  width: 40%;
-}
-
-.rightCard {
-  width: 60%;
-}
-
 .poster {
-  width: 90%;
-  height: 90%;
+  width: 60%;
+  height: 60%;
   object-fit: cover;
   border-radius: 5px;
   margin-left: 10px;
