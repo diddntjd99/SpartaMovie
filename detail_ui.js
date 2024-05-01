@@ -5,4 +5,5 @@ function setDetailUI(data) {
   document.getElementById("detailTitle").textContent = data.title;
   document.getElementById("detailPoster").src = "https://image.tmdb.org/t/p/w500" + data.poster_path;
   document.getElementById("detailOverView").textContent = data.overview;
+  document.getElementById("detailAverage").textContent = data.vote_average;
 }
