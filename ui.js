@@ -47,7 +47,15 @@ function createMovieCard(data) {
 
     //MovieCard 클릭 시 이벤트
     movieCard.addEventListener("click", function (event) {
-      alert("영화 ID = " + event.currentTarget.id);
+      //데이터 값을 url에 데이터를 전달
+
+      //객체를 JSON 문자열로 변환합니다.
+      const jsonData = JSON.stringify(element);
+
+      //JSON 문자열을 URL 인코딩합니다.
+      const encodedData = encodeURIComponent(jsonData);
+
+      window.location.href = "detail.html?movieData=" + encodedData;
     });
   });
 }
