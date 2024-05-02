@@ -1,3 +1,13 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+*{
+  font-family: "Nanum Myeongjo", serif;
+}
+
+
+
+
+
 body {
   display: flex;
   flex-direction: column;
@@ -5,7 +15,10 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-color: rgb(216, 255, 255);
+  background-color: oldlace;
+
+
+  
 }
 
 body > header {
@@ -82,3 +95,16 @@ body > header {
   border-radius: 5px;
   margin-left: 10px;
 }
+
+.nav-link.px-2.text-body-secondary{
+color:black;
+}
+
+.nav.col-12.col-lg-auto.my-2.justify-content-center.my-md-0.text-small{
+  margin-right: 110px;
+}
+
+.nav-link.text-secondary{
+  font-size: 35px;
+}
+
