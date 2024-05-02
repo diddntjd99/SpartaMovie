@@ -92,8 +92,8 @@ body > header {
   color: black;
 }
 
-.nav.col-12.col-lg-auto.my-2.justify-content-center.my-md-0.text-small {
-  margin-right: 110px;
+.icon {
+  margin: auto;
 }
 
 .nav-link.text-secondary {
