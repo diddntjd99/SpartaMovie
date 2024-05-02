@@ -58,7 +58,7 @@ function reviewLog() {
 // log 위치에 새로운 div를 만들어서 입력값을 붙여줍니다.
 function makeDiv(reviewer, content, password) {
   let newDiv = document.createElement("div");
-  // 입력값 중 id와 content를 새로운 div에 붙여주고 수정, 삭제 버튼을 생성합니다.
+  // 입력값 중 reviewer와 content를 새로운 div에 붙여주고 수정, 삭제 버튼을 생성합니다.
   newDiv.innerHTML =
     "이름: " +
     reviewer +
@@ -74,12 +74,15 @@ function makeDiv(reviewer, content, password) {
 // 삭제버튼 클릭 시 작성 리뷰 삭제합니다.(비밀번호 일치여부는 추가예정)
 function deleteBtn() {
   prompt("비밀번호를 입력해주세요!");
+  if (prompt.value !== localStorage.getItem("reviewer" + "pw")) {
+    alert("비밀번호가 틀렸습니다!")
+  } else {
   // localStorage 값을 찾아서 삭제합니다.
   localStorage.removeItem("reviwer", reviewer);
   localStorage.removeItem("content", content);
   localStorage.removeItem("password", password);
   alert("리뷰 삭제완료!");
-
+  }
   // 삭제완료 후 새로고침합니다.
   location.reload();
 }
