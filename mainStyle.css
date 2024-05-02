@@ -1,12 +1,7 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
+* {
   font-family: "Nanum Myeongjo", serif;
 }
-
-
-
-
 
 body {
   display: flex;
@@ -16,9 +11,6 @@ body {
   align-items: center;
 
   background-color: oldlace;
-
-
-  
 }
 
 body > header {
@@ -96,15 +88,14 @@ body > header {
   margin-left: 10px;
 }
 
-.nav-link.px-2.text-body-secondary{
-color:black;
+.nav-link.px-2.text-body-secondary {
+  color: black;
 }
 
-.nav.col-12.col-lg-auto.my-2.justify-content-center.my-md-0.text-small{
+.nav.col-12.col-lg-auto.my-2.justify-content-center.my-md-0.text-small {
   margin-right: 110px;
 }
 
-.nav-link.text-secondary{
+.nav-link.text-secondary {
   font-size: 35px;
 }
-

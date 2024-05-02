@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Nanum+Myeongjo&family=Poor+Story&display=swap");
+* {
+  font-family: "IBM Plex Sans KR", sans-serif;
+}
+
+.p-3.mb-3.border-bottom {
+  background-color: beige;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0 {
+  display: flex;
+}
+
+.left {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  width: 70%;
+}
