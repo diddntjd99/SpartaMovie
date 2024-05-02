@@ -18,6 +18,11 @@ body {
   display: flex;
 }
 
+#detailPoster {
+  width: 90%;
+  height: 90%;
+}
+
 .left {
   width: 30%;
   display: flex;
