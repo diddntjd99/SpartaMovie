@@ -6,7 +6,6 @@
 body {
   display: flex;
   flex-direction: column;
-  margin: 0;
   justify-content: center;
   align-items: center;
 
@@ -15,13 +14,11 @@ body {
 
 body > header {
   text-align: center;
-  /* 제목을 가운데 정렬합니다. */
   margin-top: 10px;
 }
 
 .searchContent {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 5px;
 }
@@ -88,14 +85,9 @@ body > header {
   margin-left: 10px;
 }
 
-.nav-link.px-2.text-body-secondary {
-  color: black;
-}
-
-.mainIcon {
-  margin: auto;
-}
-
-.nav-link.text-secondary {
-  font-size: 35px;
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
