@@ -4,6 +4,7 @@ function clickWrite() {
   let reviewer = document.getElementById("reviewer").value;
   let content = document.getElementById("content").value;
   let password = document.getElementById("password").value;
+
   // if 함수로 입력조건을 만들고 조건 충족이 안되면 alert창을 띄워서 알려줍니다.
   if (reviewer === null || reviewer === "") {
     alert("이름을 입력해주세요!");
@@ -25,11 +26,16 @@ function clickWrite() {
     alert("비밀번호는 6자 이상으로 설정해주세요!");
     return;
   }
+
+  if (localStorage.getItem(reviewer) !== null) {
+    alert("이미 후기를 남긴 사용자입니다!");
+    return;
+  }
+
   alert(reviewer + "님 리뷰작성 완료!");
   // input 작성 내용을 localStorage에 저장합니다.
-  localStorage.setItem("reviwer", reviewer);
-  localStorage.setItem("content", content);
-  localStorage.setItem("password", password);
+  localStorage.setItem(reviewer, content);
+  localStorage.setItem(reviewer + "pw", password);
   // 리뷰작성이 완료되면 reviewLog 함수를 실행합니다.
   return reviewLog();
 }
@@ -42,6 +48,7 @@ function reviewLog() {
   let makeReview = makeDiv(reviewer, content, password);
   let log = document.getElementById("log");
   log.appendChild(makeReview);
+
   // 작성완료 후 input을 초기화합니다.
   document.getElementById("reviewer").value = null;
   document.getElementById("content").value = null;
@@ -54,25 +61,25 @@ function makeDiv(reviewer, content, password) {
   // 입력값 중 id와 content를 새로운 div에 붙여주고 수정, 삭제 버튼을 생성합니다.
   newDiv.innerHTML =
     "이름: " +
-    localStorage.getItem("reviewer") +
+    reviewer +
     "  <input type = 'button' value = '수정'>" +
     "  <input type = 'button' id = 'deleteReview' onclick = deleteBtn() value = '삭제'>" +
     "</br>" +
     "리뷰: " +
-    localStorage.getItem("content") +
+    localStorage.getItem(reviewer) +
     "<p>";
   return newDiv;
 }
 
 // 삭제버튼 클릭 시 작성 리뷰 삭제합니다.(비밀번호 일치여부는 추가예정)
 function deleteBtn() {
-  prompt("비밀번호를 입력해주세요!")
+  prompt("비밀번호를 입력해주세요!");
   // localStorage 값을 찾아서 삭제합니다.
   localStorage.removeItem("reviwer", reviewer);
   localStorage.removeItem("content", content);
   localStorage.removeItem("password", password);
   alert("리뷰 삭제완료!");
+
   // 삭제완료 후 새로고침합니다.
   location.reload();
 }
-
