@@ -3,15 +3,13 @@
   font-family: "IBM Plex Sans KR", sans-serif;
 }
 
-.p-3.mb-3.border-bottom {
-  background-color: beige;
-}
-
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: beige;
 }
 
 .movieDetailContent {

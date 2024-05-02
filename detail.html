@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="detailStyle.css" rel="stylesheet" />
     <link href="reviewStyle.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
 
     <title>detail page</title>
   </head>
@@ -19,61 +13,50 @@
   <script src="detail_ui.js"></script>
   <script src="review.js"></script>
   <body>
-    <header class="p-3 mb-3 border-bottom">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          </a>
+    <div class="movieDetailContent">
+      <div class="left">
+        <img id="detailPoster" />
+      </div>
+      <div class="right">
+        <h1 id="detailTitle"></h1>
+        <h3 id="detailOverView"></h3>
+        <h3 id="detailAverage"></h3>
+      </div>
+    </div>
 
-          <div class="movieDetailContent">
-            <div class="left">
-              <img id="detailPoster" />
-            </div>
-            <div class="right">
-              <h3 id="detailTitle"></h3>
-              <h6 id="detailOverView"></h6>
-              <h6 id="detailAverage"></h6>
-            </div>
-          </div>
-          <!-- 리뷰 작성하는 곳입니다. -->
-          <div class="reviewBox">
-            <div class="reviewTitle">
-              <h1>[영화 한 줄 리뷰]</h1>
-            </div>
-            <div class="underLine"></div>
+    <!-- 리뷰 작성하는 곳입니다. -->
+    <div class="reviewBox">
+      <div class="reviewTitle">
+        <h1>[영화 한 줄 리뷰]</h1>
+      </div>
+      <div class="underLine"></div>
 
-            <div class="nameBox">
-              <!-- 작성한 리뷰가 표시되는 곳입니다. -->
-              <div id="log" class="reviewLog"></div>
-            </div>
-            <div class="reviewWrite">
-              <!-- 리뷰를 입력하는 곳입니다. -->
-              <div class="input-group" id="inputReview">
-                <input class="inputName" id="reviewer" type="text" size="5" placeholder="이 름" />
-                <!-- 리뷰는 10자 이상으로 제한합니다. -->
-                <input class="inputReview" id="content" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
-                <!-- 비밀번호는 6자 이상으로 제한합니다. -->
-                <input class="inputPassword" id="password" type="password" size="10" placeholder="비밀번호" autocomplete="current-password" minlength="6" />
-                <!-- 작성버튼 클릭 시 clickWrite함수를 실행합니다. -->
-                <button type="button" class="writeBtn" onclick="clickWrite()">작성</button>
-              </div>
-            </div>
-          </div>
+      <div class="nameBox">
+        <!-- 작성한 리뷰가 표시되는 곳입니다. -->
+        <div id="log" class="reviewLog"></div>
+      </div>
+      <div class="reviewWrite">
+        <!-- 리뷰를 입력하는 곳입니다. -->
+        <div class="input-group" id="inputReview">
+          <input class="inputName" id="reviewer" type="text" size="5" placeholder="이 름" />
+          <!-- 리뷰는 10자 이상으로 제한합니다. -->
+          <input class="inputReview" id="content" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
+          <!-- 비밀번호는 6자 이상으로 제한합니다. -->
+          <input class="inputPassword" id="password" type="password" size="10" placeholder="비밀번호" autocomplete="current-password" minlength="6" />
+          <!-- 작성버튼 클릭 시 clickWrite함수를 실행합니다. -->
+          <button type="button" class="writeBtn" onclick="clickWrite()">작성</button>
         </div>
       </div>
-    </header>
+    </div>
 
     <footer>
-      <div id="dropdown">
-        <a href="main.html">
-          <img
-            src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
-            width="40"
-            height="40"
-          />
-        </a>
-      </div>
+      <a href="main.html">
+        <img
+          src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
+          width="40"
+          height="40"
+        />
+      </a>
     </footer>
   </body>
 </html>
