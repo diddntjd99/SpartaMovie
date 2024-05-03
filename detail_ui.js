@@ -90,12 +90,22 @@ function deleteBtn() {
 
 // 수정 버튼 클릭 시 모달창이 켜지고 해당 모달창에서 수정하도록 설정
 function updateBtn() {
-  const modal = document.querySelector(".modal");
-  modal.style.display = "flex";
-  //모달창을 키면 부모창의 마우스 휠 이벤트 금지
-  document.body.addEventListener("wheel", preventScroll, { passive: false });
+  const promptPW = prompt("비밀번호를 입력해주세요!");
+  const reviewer = this.parentNode.querySelector(".reviewer").textContent.trim(); // 리뷰어 이름 가져오기
+  const localPW = localStorage.getItem(reviewer + "pw"); // 해당 리뷰어의 비밀번호 가져오기
 
-  document.getElementById("updateReviewer").textContent = this.parentNode.querySelector(".reviewer").textContent.trim();
+  if (promptPW === localPW) {
+    const modal = document.querySelector(".modal");
+    modal.style.display = "flex";
+    //모달창을 키면 부모창의 마우스 휠 이벤트 금지
+    document.body.addEventListener("wheel", preventScroll, { passive: false });
+
+    document.getElementById("updateReviewer").textContent = this.parentNode.querySelector(".reviewer").textContent.trim();
+  } else if (promptPW == null) {
+    //프롬프트 취소했을 경우
+  } else {
+    alert("비밀번호를 확인해주세요!");
+  }
 }
 
 // 모달창에서 수정 완료 시
