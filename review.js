@@ -55,34 +55,39 @@ function reviewLog() {
   document.getElementById("password").value = null;
 }
 
-// log 위치에 새로운 div를 만들어서 입력값을 붙여줍니다.
 function makeDiv(reviewer, content, password) {
   let newDiv = document.createElement("div");
-  // 입력값 중 reviewer와 content를 새로운 div에 붙여주고 수정, 삭제 버튼을 생성합니다.
+  // 리뷰어 이름과 리뷰 내용을 출력하고 수정, 삭제 버튼을 생성합니다.
   newDiv.innerHTML =
-    "이름: " +
+    "이름: <span class='reviewer'>" +
     reviewer +
-    "  <input type = 'button' value = '수정'>" +
-    "  <input type = 'button' id = 'deleteReview' onclick = deleteBtn() value = '삭제'>" +
-    "</br>" +
+    "</span>  <input type='button' value='수정'>" +
+    "  <input type='button' class='deleteBtn' value='삭제'>" +
+    "<br>" +
     "리뷰: " +
-    localStorage.getItem(reviewer) +
+    content +
     "<p>";
+
+  // 삭제 버튼에 클릭 이벤트 핸들러 등록
+  let deleteButton = newDiv.querySelector(".deleteBtn");
+  deleteButton.addEventListener("click", deleteBtn);
+
   return newDiv;
 }
 
-// 삭제버튼 클릭 시 작성 리뷰 삭제합니다.(비밀번호 일치여부는 추가예정)
+// 삭제 버튼 클릭 시 해당 리뷰를 삭제하는 함수
 function deleteBtn() {
-  prompt("비밀번호를 입력해주세요!");
-  if (prompt.value !== localStorage.getItem("reviewer" + "pw")) {
-    alert("비밀번호가 틀렸습니다!")
+  let promptPW = prompt("비밀번호를 입력해주세요!");
+  let reviewer = this.parentNode.querySelector(".reviewer").textContent.trim(); // 리뷰어 이름 가져오기
+  let localPW = localStorage.getItem(reviewer + "pw"); // 해당 리뷰어의 비밀번호 가져오기
+
+  if (promptPW === localPW) {
+    // localStorage에서 리뷰어와 관련된 리뷰와 비밀번호를 삭제합니다.
+    localStorage.removeItem(reviewer);
+    localStorage.removeItem(reviewer + "pw");
+    alert("리뷰 삭제 완료!");
+    location.reload();
   } else {
-  // localStorage 값을 찾아서 삭제합니다.
-  localStorage.removeItem("reviwer", reviewer);
-  localStorage.removeItem("content", content);
-  localStorage.removeItem("password", password);
-  alert("리뷰 삭제완료!");
+    alert("비밀번호를 확인해주세요!");
   }
-  // 삭제완료 후 새로고침합니다.
-  location.reload();
 }
