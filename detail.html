@@ -6,11 +6,8 @@
     <title>detail page</title>
 
     <link href="detailStyle.css" rel="stylesheet" />
-    <link href="reviewStyle.css" rel="stylesheet" />
-    <script src="ui.js"></script>
     <script src="detail.js"></script>
     <script src="detail_ui.js"></script>
-    <script src="review.js"></script>
   </head>
 
   <body>
@@ -19,9 +16,9 @@
         <img id="detailPoster" />
       </div>
       <div class="right">
-        <h1 id="detailTitle"></h1>
-        <h3 id="detailOverView"></h3>
-        <h3 id="detailAverage"></h3>
+        <h2 id="detailTitle"></h2>
+        <h4 id="detailOverView"></h4>
+        <h4 id="detailAverage"></h4>
       </div>
     </div>
 
@@ -44,20 +41,32 @@
           <input class="inputReview" id="content" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
           <!-- 비밀번호는 6자 이상으로 제한합니다. -->
           <input class="inputPassword" id="password" type="password" size="10" placeholder="비밀번호" autocomplete="current-password" minlength="6" />
-          <!-- 작성버튼 클릭 시 clickWrite함수를 실행합니다. -->
-          <button type="button" class="writeBtn" onclick="clickWrite()">작성</button>
+          <!-- 작성버튼 클릭 시 writeReview함수를 실행합니다. -->
+          <button type="button" class="writeBtn" onclick="writeReview()">작성</button>
         </div>
       </div>
     </div>
 
+    <div class="modal">
+      <div class="modal_body">
+        <p id="updateReviewer"></p>
+        <input class="inputReview" id="updateContent" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
+        <input class="inputPassword" id="updatePassword" type="password" size="10" placeholder="비밀번호" autocomplete="current-password" minlength="6" />
+        <button type="button" class="writeBtn" onclick="updateReview()">확인</button>
+        <button type="button" class="writeBtn" onclick="updateCancel()">취소</button>
+      </div>
+    </div>
+
     <footer>
-      <a href="main.html">
-        <img
-          src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
-          width="40"
-          height="40"
-        />
-      </a>
+      <div>
+        <a href="main.html">
+          <img
+            src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
+            width="40"
+            height="40"
+          />
+        </a>
+      </div>
     </footer>
   </body>
 </html>

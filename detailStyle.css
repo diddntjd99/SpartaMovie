@@ -31,3 +31,58 @@ body {
 .right {
   width: 70%;
 }
+
+.reviewBox {
+  outline: dashed 2px black;
+  background-color: yellow;
+  width: 700px;
+  height: 400px;
+  margin: auto;
+}
+
+.underLine {
+  width: 700px;
+  height: 5px;
+  background-color: black;
+  margin-bottom: 10px;
+}
+
+.reviewTitle {
+  text-align: center;
+  height: 50px;
+}
+
+.input-group {
+  margin: 270px 2px auto 2px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* 부모 화면 회색 처리 */
+}
+
+.modal_body {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 600px;
+  height: 200px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translate(-50%, -50%);
+}
