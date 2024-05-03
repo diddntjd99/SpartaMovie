@@ -91,3 +91,25 @@ function deleteBtn() {
     alert("비밀번호를 확인해주세요!");
   }
 }
+
+// 새로고침 시 loadReview 함수를 실행
+window.onload = function () {
+  loadReview();
+};
+
+// localstorage에 있는 key와 value를 log에 Div로 붙이는 함수
+function loadReview() {
+  // localstorage의 key에 반복문 설정
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    // 리뷰 하나당 key가 2개 생성되므로 pw 없는 key를 선택하는 조건문 생성
+    // key 마지막글자에 pw가 붙어있으면
+    if (key.endsWith("pw")) {
+      let reviewer = key.substring(0, key.length - 2); // key 뒤에 2글자(pw)를 지우기
+      let content = localStorage.getItem(reviewer);
+      let makeReview = makeDiv(reviewer, content);
+      let log = document.getElementById("log");
+      log.appendChild(makeReview);
+    }
+  }
+}
