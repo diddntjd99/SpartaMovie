@@ -180,20 +180,24 @@ function validation(reviewer, content, password) {
     alert("이름을 입력해주세요!");
     return false;
   }
-  if (content === null || content === "") {
+  if (content === null || content === " ") {
     alert("리뷰를 입력해주세요!");
     return false;
   }
-  if (content.length < 10) {
-    alert("리뷰는 10자 이상 작성해주세요!");
+  if (content.replace(/\s/g, "").length < 5) {
+    alert("리뷰는 5자 이상 작성해주세요!");
     return false;
   }
   if (password === null || password === "") {
     alert("비밀번호를 입력해주세요!");
     return false;
   }
-  if (password.length < 6) {
-    alert("비밀번호는 6자 이상으로 설정해주세요!");
+  if (password.length < 4) {
+    alert("비밀번호는 4자 이상으로 설정해주세요!");
+    return false;
+  }
+  if (!/^\d{4}$/.test(password)) {
+    alert("비밀번호를 숫자로 입력해주세요!");
     return false;
   }
 

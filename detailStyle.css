@@ -37,7 +37,7 @@ body {
   background-color: yellow;
   width: 700px;
   height: 400px;
-  margin: auto;
+  margin: 50px auto auto auto;
 }
 
 .underLine {
