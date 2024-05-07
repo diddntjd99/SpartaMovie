@@ -71,6 +71,12 @@ body > header {
   justify-content: center;
   align-items: center;
   background-color: white;
+
+  transition: all 0.2s linear;
+}
+
+.movieCard:hover {
+  transform: scale(1.2);
 }
 
 .movieTitle {
