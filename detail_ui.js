@@ -6,6 +6,8 @@ function setDetailUI(data) {
   document.getElementById("detailPoster").src = "https://image.tmdb.org/t/p/w500" + data.poster_path;
   document.getElementById("detailOverView").textContent = data.overview;
   document.getElementById("detailAverage").textContent = data.vote_average;
+
+  document.getElementsByClassName("movieId")[0].id = data.id;
 }
 
 // 리뷰 코드
@@ -20,26 +22,44 @@ function writeReview() {
     return;
   }
 
-  if (localStorage.getItem(reviewer) !== null) {
+  if (localStorage.getItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer) !== null) {
     alert("이미 후기를 남긴 사용자입니다!");
     return;
   }
 
   alert(reviewer + "님 리뷰 작성 완료!");
   // input 작성 내용을 localStorage에 저장합니다.
-  localStorage.setItem(reviewer, content);
-  localStorage.setItem(reviewer + "pw", password);
-  // 리뷰작성이 완료되면 reviewLog 함수를 실행합니다.
-  return reviewLog();
+  // 영화 id + / + reviewer
+  const reviewData = [content, password];
+  localStorage.setItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer, JSON.stringify(reviewData));
+
+  // localStorage에서 해당 영화 id 키의 값들(reviewer 목록) 변경
+  if (localStorage.getItem(document.getElementsByClassName("movieId")[0].id) === null) {
+    const arr = [reviewer];
+    localStorage.setItem(document.getElementsByClassName("movieId")[0].id, JSON.stringify(arr));
+  } else {
+    const arr = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id));
+    arr.push(reviewer);
+    localStorage.setItem(document.getElementsByClassName("movieId")[0].id, JSON.stringify(arr));
+  }
+
+  // 리뷰작성이 완료되면 updateLog 함수를 실행합니다.
+  return updateLog();
 }
 
 // input에 입력한 값을 불러와서 makeReview 함수를 실행한 후 log 위치에 붙여줍니다.
-function reviewLog() {
+function updateLog() {
   const reviewer = document.getElementById("reviewer").value;
   const content = document.getElementById("content").value;
   const makeReview = makeDiv(reviewer, content);
   const log = document.getElementById("log");
-  log.appendChild(makeReview);
+
+  //최근 저장한 리뷰가 맨 위로
+  if (log.firstChild) {
+    log.insertBefore(makeReview, log.firstChild);
+  } else {
+    log.appendChild(makeReview);
+  }
 
   // 작성완료 후 input을 초기화합니다.
   document.getElementById("reviewer").value = null;
@@ -73,12 +93,16 @@ function makeDiv(reviewer, content) {
 function deleteBtn() {
   const promptPW = prompt("비밀번호를 입력해주세요!");
   const reviewer = this.parentNode.querySelector(".reviewer").textContent.trim(); // 리뷰어 이름 가져오기
-  const localPW = localStorage.getItem(reviewer + "pw"); // 해당 리뷰어의 비밀번호 가져오기
+  const localPW = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer))[1]; // 해당 리뷰어의 비밀번호 가져오기
 
   if (promptPW === localPW) {
     // localStorage에서 리뷰어와 관련된 리뷰와 비밀번호를 삭제합니다.
-    localStorage.removeItem(reviewer);
-    localStorage.removeItem(reviewer + "pw");
+    // localStorage에 영화 id + "/" + reviewer 데이터 삭제 및 localStorage에서 해당 영화 id 키의 값들(reviewer 목록) 변경
+    localStorage.removeItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer);
+    const reviewers = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id));
+    const updateReviewers = reviewers.filter((name) => name !== reviewer);
+    localStorage.setItem(document.getElementsByClassName("movieId")[0].id, JSON.stringify(updateReviewers));
+
     alert("리뷰 삭제 완료!");
     location.reload();
   } else if (promptPW == null) {
@@ -92,7 +116,7 @@ function deleteBtn() {
 function updateBtn() {
   const promptPW = prompt("비밀번호를 입력해주세요!");
   const reviewer = this.parentNode.querySelector(".reviewer").textContent.trim(); // 리뷰어 이름 가져오기
-  const localPW = localStorage.getItem(reviewer + "pw"); // 해당 리뷰어의 비밀번호 가져오기
+  const localPW = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer))[1]; // 해당 리뷰어의 비밀번호 가져오기
 
   if (promptPW === localPW) {
     const modal = document.querySelector(".modal");
@@ -120,15 +144,13 @@ function updateReview() {
 
   alert(reviewer + "님 리뷰 수정 완료!");
   // input 작성 내용을 localStorage에 저장합니다.
-  localStorage.setItem(reviewer, content);
-  localStorage.setItem(reviewer + "pw", password);
-  // 리뷰작성이 완료되면 reviewLog 함수를 실행합니다.
+  const reviewData = [content, password];
+  localStorage.setItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewer, JSON.stringify(reviewData));
 
-  updateCancel();
   location.reload();
 }
 
-// 모달창에서 취소 시
+// 모달창에서 빠져나왔을 경우 실행
 function updateCancel() {
   const modal = document.querySelector(".modal");
   modal.style.display = "none";
@@ -136,17 +158,16 @@ function updateCancel() {
   document.body.removeEventListener("wheel", preventScroll);
 }
 
-// localstorage에 있는 key와 value를 log에 Div로 붙이는 함수
+// localstorage에 있는 해당 영화의 리뷰 보이기
 function loadReview() {
-  // localstorage의 key에 반복문 설정
-  for (let i = localStorage.length - 1; i >= 0; i--) {
-    const key = localStorage.key(i);
-    // 리뷰 하나당 key가 2개 생성되므로 pw 없는 key를 선택하는 조건문 생성
-    // key 마지막글자에 pw가 붙어있으면
-    if (key.endsWith("pw")) {
-      const reviewer = key.substring(0, key.length - 2); // key 뒤에 2글자(pw)를 지우기
-      const content = localStorage.getItem(reviewer);
-      const makeReview = makeDiv(reviewer, content);
+  if (localStorage.getItem(document.getElementsByClassName("movieId")[0].id) !== null) {
+    // localStorage에서 해당 영화 id 키의 값들(reviewer 목록) 가져오기
+    const reviewers = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id));
+
+    // 가져온 reviewer 목록을 반복문을 통해 localStorage에서 해당 영화 id + / + reviewer 값 가져오기
+    for (let i = reviewers.length - 1; i >= 0; i--) {
+      const reviewData = JSON.parse(localStorage.getItem(document.getElementsByClassName("movieId")[0].id + "/" + reviewers[i]));
+      const makeReview = makeDiv(reviewers[i], reviewData[0]);
       const log = document.getElementById("log");
       log.appendChild(makeReview);
     }
