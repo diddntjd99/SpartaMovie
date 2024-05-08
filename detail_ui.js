@@ -73,13 +73,16 @@ function makeDiv(reviewer, content) {
   newDiv.innerHTML =
     "이름: <span class='reviewer'>" +
     reviewer +
-    "</span>  <input type='button' class='updateBtn' value='수정'>" +
-    "  <input type='button' class='deleteBtn' value='삭제'>" +
+    "</span>"+  
     "<br>" +
     "리뷰: " +
     content +
+    "<br>" +
+    "<input type='button' class='updateBtn' value='수정'>" +  
+    // 리뷰창을 정리 해봤지만, 가끔 가다가 수정이 리뷰 옆으로 가는 경우가 있습니다. 
+    " <input type='button' class='deleteBtn' value='삭제'>" +
     "<p>";
-
+ 
   // 삭제 버튼에 클릭 이벤트 핸들러 등록
   const deleteButton = newDiv.querySelector(".deleteBtn");
   deleteButton.addEventListener("click", deleteBtn);

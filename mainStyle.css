@@ -73,7 +73,8 @@ body > header {
   background-color: white;
 
   transition: all 0.2s linear;
-}
+  cursor: url(https://ani.cursors-4u.net/toons/too-12/too1130.cur), auto !important;}
+
 
 .movieCard:hover {
   transform: scale(1.2);
