@@ -11,7 +11,6 @@
   </head>
 
   <body>
- 
     <div class="movieDetailContent">
       <div class="left">
         <img id="detailPoster" />
@@ -22,37 +21,47 @@
         <h4 id="detailAverage"></h4>
 
         <!-- 리뷰 작성하는 곳입니다. -->
+        <div class="reviewTitle">
+          <h1>영화 한 줄 리뷰 작성하기</h1>
+        </div>
         <div class="reviewBox">
-          <div class="reviewTitle">
-            <h1>영화 한 줄 리뷰 작성하기</h1>
-          </div>
-          <div class="underLine"></div>
-
           <div class="nameBox">
             <!-- 작성한 리뷰가 표시되는 곳입니다. -->
             <div id="log" class="reviewLog"></div>
           </div>
-          <div class="reviewWrite">
-            <!-- 리뷰를 입력하는 곳입니다. -->
-            <div class="input-group" id="inputReview">
-              <input class="inputName" id="reviewer" type="text" size="5" placeholder="이 름" />
-              <!-- 리뷰는 5자 이상으로 제한합니다. -->
-              <input class="inputReview" id="content" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
-              <!-- 비밀번호는 4자 이상으로 제한합니다. -->
-              <input
-                class="inputPassword"
-                id="password"
-                type="password"
-                size="10"
-                placeholder="비밀번호"
-                autocomplete="current-password"
-                minlength="4"
-                maxlength="8"
-              />
-              <!-- 작성버튼 클릭 시 writeReview함수를 실행합니다. -->
-              <button type="button" class="writeBtn" onclick="writeReview()">작성</button>
-            </div>
-          </div>
+        </div>
+        <div class="input-group" id="inputReview">
+          <input
+            class="inputName"
+            id="reviewer"
+            type="text"
+            size="5"
+            placeholder="이 름"
+          />
+          <!-- 리뷰는 10자 이상으로 제한합니다. -->
+          <input
+            class="inputReview"
+            id="content"
+            type="text"
+            size="60"
+            placeholder="리뷰를 입력해주세요"
+            minlength="10"
+          />
+          <!-- 비밀번호는 4자 이상, 8자 이하로 제한합니다. -->
+          <input
+            class="inputPassword"
+            id="password"
+            type="password"
+            size="8"
+            placeholder="비밀번호"
+            autocomplete="current-password"
+            minlength="4"
+            maxlength="8"
+          />
+          <!-- 작성버튼 클릭 시 writeReview함수를 실행합니다. -->
+          <button type="button" class="writeBtn" onclick="writeReview()">
+            작성
+          </button>
         </div>
       </div>
     </div>
@@ -60,7 +69,14 @@
     <div class="modal">
       <div class="modal_body">
         <p id="updateReviewer"></p>
-        <input class="inputReview" id="updateContent" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
+        <input
+          class="inputReview"
+          id="updateContent"
+          type="text"
+          size="60"
+          placeholder="리뷰를 입력해주세요"
+          minlength="10"
+        />
         <input
           class="inputPassword"
           id="updatePassword"
@@ -71,8 +87,12 @@
           minlength="4"
           maxlength="8"
         />
-        <button type="button" class="writeBtn" onclick="updateReview()">확인</button>
-        <button type="button" class="writeBtn" onclick="updateCancel()">취소</button>
+        <button type="button" class="writeBtn" onclick="updateReview()">
+          확인
+        </button>
+        <button type="button" class="writeBtn" onclick="updateCancel()">
+          취소
+        </button>
       </div>
     </div>
 

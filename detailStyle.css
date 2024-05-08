@@ -35,28 +35,45 @@ body {
   width: 70%;
 }
 
+.reviewTitle {
+  text-align: center;
+  margin: 50px auto 0px auto;
+  width: 700px;
+  height: 50px;
+  border-style: solid;
+  border-width: 0px 0px 5px 0px;
+  background-color: rgb(197, 209, 221);
+}
+
 .reviewBox {
   background-color: rgb(237, 241, 255);
   width: 700px;
-  height: 550px;
-  margin: 50px auto auto auto;
-  cursor: url(https://cur.cursors-4u.net/games/gam-11/gam1058.cur), auto !important;}
-
-.underLine {
-  width: 700px;
-  height: 2px;
-  background-color: black;
-  margin-bottom: 10px;
-
+  height: 500px;
+  margin: 0px auto 0px auto;
+  overflow-y: auto;
+  cursor: url(https://cur.cursors-4u.net/games/gam-11/gam1058.cur), auto !important;
 }
 
-.reviewTitle {
-  text-align: center;
-  height: 50px;
-}
+/* 카카오톡 말풍선 같이 구현 */
+.nameBox{
+  border-radius: 10px;
+  background-color: white;
+  width: 550px;
+  margin: 20px auto 20px 12px;
+  padding: 0px 0px 0px 7px;
+  word-break: break-all;
+  }
+  
 
 .input-group {
-  margin: 270px 2px auto 2px;
+  width: 700px;
+  height: 50px;
+  margin: 0px auto auto auto;
+  background-color: rgb(237, 241, 255);
+}
+
+.writeBtn{
+  margin-top: 15px;
 }
 
 .modal {
@@ -91,27 +108,3 @@ body {
   cursor: url(https://cur.cursors-4u.net/toons/too-4/too385.cur), auto !important;
 }
 
-
-.writeBtn{
-  margin-top: 15px;
-}
-
-
-.nameBox{
-  border-radius: 10px;
-  background-color: white;
-  width: 250px;
-  margin-left: 12px;
-  }
-  
- /* 카카오톡 말풍선 같이 구현 */
-
-.reviewTitle{
-  background-color: rgb(197, 209, 221);
-}
-
-.input-group{
-  margin-top: 350px;
-}
-
-/* 마진 탑을 350px 이상으로 하면 이름, 리뷰, 비밀번호 작성하는 곳이 리뷰 창 이상으로 넘어갈 것 같습니다 */
