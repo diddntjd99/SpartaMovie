@@ -20,6 +20,7 @@ body > header {
 .searchContent {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
 }
 
@@ -42,11 +43,10 @@ body > header {
 }
 
 #pageDropdown {
-  margin-left: auto;
-  margin-top: 30px;
+  margin-left: 1200px;
+  margin-top: 10px;
   width: 60px;
   height: 30px;
-  margin-right: 10px;
 }
 
 #movieContent {
@@ -73,8 +73,8 @@ body > header {
   background-color: white;
 
   transition: all 0.2s linear;
-  cursor: url(https://ani.cursors-4u.net/toons/too-12/too1130.cur), auto !important;}
-
+  cursor: url(https://ani.cursors-4u.net/toons/too-12/too1130.cur), auto !important;
+}
 
 .movieCard:hover {
   transform: scale(1.2);
@@ -82,6 +82,7 @@ body > header {
 
 .movieTitle {
   font-weight: bold;
+  text-align: center;
 }
 
 .poster {

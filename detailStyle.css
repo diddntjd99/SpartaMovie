@@ -3,20 +3,24 @@
   font-family: "IBM Plex Sans KR", sans-serif;
 }
 
-
-
-
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background-color: white;
+  background-color: oldlace;
+}
+
+.js {
+  position: absolute;
+  top: 10px;
+  left: 0;
 }
 
 .movieDetailContent {
   display: flex;
+  margin-top: 20px;
 }
 
 #detailPoster {
@@ -32,12 +36,19 @@ body {
 }
 
 .right {
-  width: 70%;
+  width: 60%;
+  margin-top: 10px;
+}
+
+.reviewContent {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 700px;
 }
 
 .reviewTitle {
   text-align: center;
-  margin: 50px auto 0px auto;
+  margin: -20px auto 0px 0px;
   width: 700px;
   height: 50px;
   border-style: solid;
@@ -48,32 +59,43 @@ body {
 .reviewBox {
   background-color: rgb(237, 241, 255);
   width: 700px;
-  height: 500px;
-  margin: 0px auto 0px auto;
+  height: 400px;
+  margin: 0px auto 0px 0px;
   overflow-y: auto;
   cursor: url(https://cur.cursors-4u.net/games/gam-11/gam1058.cur), auto !important;
 }
 
 /* 카카오톡 말풍선 같이 구현 */
-.nameBox{
+.review {
+  position: relative;
   border-radius: 10px;
   background-color: white;
-  width: 550px;
-  margin: 20px auto 20px 12px;
+  width: 500px;
+  margin: 10px auto 10px 12px;
   padding: 0px 0px 0px 7px;
   word-break: break-all;
-  }
-  
+}
 
 .input-group {
   width: 700px;
   height: 50px;
-  margin: 0px auto auto auto;
+  margin: 0px auto auto 0px;
   background-color: rgb(237, 241, 255);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
 }
 
-.writeBtn{
-  margin-top: 15px;
+.reviewBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  margin-bottom: 3px;
+  margin-right: 3px;
 }
 
 .modal {
@@ -94,7 +116,7 @@ body {
   left: 50%;
 
   width: 600px;
-  height: 200px;
+  height: 100px;
 
   padding: 40px;
 
@@ -108,3 +130,6 @@ body {
   cursor: url(https://cur.cursors-4u.net/toons/too-4/too385.cur), auto !important;
 }
 
+.modalBtn {
+  margin-top: 10px;
+}

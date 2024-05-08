@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <div class="js">
+      <a href="main.html">
+        <img
+          src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
+          width="40"
+          height="40"
+        />
+      </a>
+    </div>
     <div class="movieDetailContent">
       <div class="left">
         <img id="detailPoster" />
@@ -21,47 +30,32 @@
         <h4 id="detailAverage"></h4>
 
         <!-- 리뷰 작성하는 곳입니다. -->
-        <div class="reviewTitle">
-          <h1>영화 한 줄 리뷰 작성하기</h1>
-        </div>
-        <div class="reviewBox">
-          <div class="nameBox">
+        <div class="reviewContent">
+          <div class="reviewTitle">
+            <h1>영화 한 줄 리뷰 작성하기</h1>
+          </div>
+          <div class="reviewBox">
             <!-- 작성한 리뷰가 표시되는 곳입니다. -->
             <div id="log" class="reviewLog"></div>
           </div>
-        </div>
-        <div class="input-group" id="inputReview">
-          <input
-            class="inputName"
-            id="reviewer"
-            type="text"
-            size="5"
-            placeholder="이 름"
-          />
-          <!-- 리뷰는 10자 이상으로 제한합니다. -->
-          <input
-            class="inputReview"
-            id="content"
-            type="text"
-            size="60"
-            placeholder="리뷰를 입력해주세요"
-            minlength="10"
-          />
-          <!-- 비밀번호는 4자 이상, 8자 이하로 제한합니다. -->
-          <input
-            class="inputPassword"
-            id="password"
-            type="password"
-            size="8"
-            placeholder="비밀번호"
-            autocomplete="current-password"
-            minlength="4"
-            maxlength="8"
-          />
-          <!-- 작성버튼 클릭 시 writeReview함수를 실행합니다. -->
-          <button type="button" class="writeBtn" onclick="writeReview()">
-            작성
-          </button>
+          <div class="input-group" id="inputReview">
+            <input class="inputName" id="reviewer" type="text" size="5" placeholder="이 름" />
+            <!-- 리뷰는 10자 이상으로 제한합니다. -->
+            <input class="inputReview" id="content" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
+            <!-- 비밀번호는 4자 이상, 8자 이하로 제한합니다. -->
+            <input
+              class="inputPassword"
+              id="password"
+              type="password"
+              size="8"
+              placeholder="비밀번호"
+              autocomplete="current-password"
+              minlength="4"
+              maxlength="8"
+            />
+            <!-- 작성버튼 클릭 시 writeReview함수를 실행합니다. -->
+            <button type="button" class="writeBtn" onclick="writeReview()">작성</button>
+          </div>
         </div>
       </div>
     </div>
@@ -69,14 +63,7 @@
     <div class="modal">
       <div class="modal_body">
         <p id="updateReviewer"></p>
-        <input
-          class="inputReview"
-          id="updateContent"
-          type="text"
-          size="60"
-          placeholder="리뷰를 입력해주세요"
-          minlength="10"
-        />
+        <input class="inputReview" id="updateContent" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
         <input
           class="inputPassword"
           id="updatePassword"
@@ -87,25 +74,9 @@
           minlength="4"
           maxlength="8"
         />
-        <button type="button" class="writeBtn" onclick="updateReview()">
-          확인
-        </button>
-        <button type="button" class="writeBtn" onclick="updateCancel()">
-          취소
-        </button>
+        <button type="button" class="modalBtn" onclick="updateReview()">확인</button>
+        <button type="button" class="modalBtn" onclick="updateCancel()">취소</button>
       </div>
     </div>
-
-    <footer>
-      <div class="js">
-        <a href="main.html">
-          <img
-            src="https://teamsparta.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2Fbe1c31e6-0899-4780-b862-b1d20bae52bc%2Fimage.png?table=block&id=7f13a7c0-77d0-4702-a9f9-a71ac61199ab&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=250&userId=&cache=v2"
-            width="40"
-            height="40"
-          />
-        </a>
-      </div>
-    </footer>
   </body>
 </html>
