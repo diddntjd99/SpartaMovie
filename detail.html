@@ -61,7 +61,16 @@
       <div class="modal_body">
         <p id="updateReviewer"></p>
         <input class="inputReview" id="updateContent" type="text" size="60" placeholder="리뷰를 입력해주세요" minlength="10" />
-        <input class="inputPassword" id="updatePassword" type="password" size="10" placeholder="비밀번호" autocomplete="current-password" minlength="6" />
+        <input
+          class="inputPassword"
+          id="updatePassword"
+          type="password"
+          size="10"
+          placeholder="비밀번호"
+          autocomplete="current-password"
+          minlength="4"
+          maxlength="8"
+        />
         <button type="button" class="writeBtn" onclick="updateReview()">확인</button>
         <button type="button" class="writeBtn" onclick="updateCancel()">취소</button>
       </div>
