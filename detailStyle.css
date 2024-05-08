@@ -116,7 +116,7 @@ body {
   left: 50%;
 
   width: 600px;
-  height: 100px;
+  height: 150px;
 
   padding: 40px;
 
@@ -132,4 +132,6 @@ body {
 
 .modalBtn {
   margin-top: 10px;
+  margin-right: 15px;
+  float: right;
 }
